@@ -1,0 +1,19 @@
+.btnm {
+    text-align: center;
+  }
+  
+  .btnm a {
+    display: inline-block;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #8a7041;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btnm a:hover {
+    background-color: #362e19;
+  }
