@@ -1,43 +1,436 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <title>Shu-Web!</title>
-    <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educación para la Paz - Cultura de paz UANL</title>
+    <style>
+        /* CSS */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .main-content {
+            padding: 3rem 0;
+        }
+        
+        .blog-post {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .post-header {
+            margin-bottom: 1.5rem;
+        }
+        
+        .post-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .post-meta {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .post-content {
+            margin-bottom: 1.5rem;
+        }
+        
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tag {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .comments-section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .comments-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-color);
+        }
+        
+        .comment-form {
+            margin-bottom: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+        }
+        
+        .comment-list {
+            margin-top: 2rem;
+        }
+        
+        .comment {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comment:last-child {
+            border-bottom: none;
+        }
+        
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .comment-author {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .comment-date {
+            color: var(--text-light);
+            font-size: 0.8rem;
+        }
+        
+        .comment-content {
+            line-height: 1.6;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-links {
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <p class="logo">SHU</p>
-            <nav>
-                <a href="index.html">Inicio</a>
-                <a href="#about">Sobre nosotros</a>
-                <a href="products.html">Productos</a>
-                <a href="contacto.html">Contacto</a>
-            </nav>
+            <div class="header-content">
+                <div class="logo">Educación<span>Paz</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Iniciativas</a></li>
+                        <li><a href="#">Recursos</a></li>
+                        <li><a href="#">Sobre Nosotros</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </header>
-
-    <section id="hero">
-        <h1>Snack, Higiene & Útiles</h1>
-        <button><a href="products.html" class="botoncito"> Expendedor SHU</a></button>
-      
-    </section>
-
-    <div class="about-section" id="about">
-      <div class="about-img">
-        <img src="Logo de cafetería simple gris.png" alt="Imagen de SHU">
-      </div>
-      <div class="about-text">
-        <h3>Sobre nosotros</h3>
-        <br>
-        <p>El nombre de la empresa SHU son las iniciales que brindamos (snack, higiene y útiles) es una empresa mexicana que nace en Monterrey N.L en el año 20XX, somos una empresa innovadora que, en primera instancia, buscamos satisfacer las principales necesidades de los estudiantes a través de nuestras máquinas expendedoras, ya sea en proporciones materiales escolares de calidad en el momento en el que lo requieran, así como en brindarles productos de higiene personal y snacks.</p>
-        <p>Nuestro compromiso con el mercado y el cliente se basa en dos cosas, la calidad de nuestros productos y el buen trato al cliente.</p>
-        <div class="about-link">
-          <a href="about.html"><strong>Más información</strong></a>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Construyendo Cultura de Paz desde la Universidad</h1>
+            <p>Un espacio para compartir iniciativas, experiencias y recursos sobre educación para la paz en el ámbito universitario.</p>
+            <a href="#" class="btn">Únete a la comunidad</a>
         </div>
-      </div>
-    </div>
-   
+    </section>
+    
+    <section class="main-content">
+        <div class="container">
+            <article class="blog-post">
+                <div class="post-header">
+                    <h2 class="post-title">¿Cómo practicar la educación para la paz en la universidad?</h2>
+                    <div class="post-meta">Publicado el 15 de marzo, 2025 por <a href="#">El equipo de cultura de paz</a></div>
+                </div>
+                
+                <div class="post-content">
+                    <img src="https://images.unsplash.com/photo-1524179091875-bf99a9a6af57?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Estudiantes dialogando">
+                    
+                    <p>La educación para la paz es un proceso educativo integral que busca desarrollar en las personas los conocimientos, actitudes y habilidades necesarias para prevenir conflictos y construir una cultura de paz. En el contexto universitario, esta educación adquiere especial relevancia como espacio de formación de futuros profesionales y líderes sociales.</p>
+                    
+                    <h3>Mi enfoque personal para la educación para la paz</h3>
+                    
+                    <p>Desde nuestra experiencia como docente universitaria, he implementado varias estrategias para fomentar la cultura de paz:</p>
+                    
+                    <ol>
+                        <li><strong>Diálogo interdisciplinario:</strong> Organizo seminarios donde estudiantes de distintas carreras analizan problemas sociales desde diversas perspectivas, aprendiendo a valorar la diversidad de enfoques.</li>
+                        
+                        <li><strong>Aprendizaje servicio:</strong> Diseñé proyectos donde los estudiantes aplican sus conocimientos para resolver problemas comunitarios reales, desarrollando empatía y compromiso social.</li>
+                        
+                        <li><strong>Resolución pacífica de conflictos:</strong> Incorporo en mis clases talleres prácticos sobre negociación y mediación, usando casos reales del entorno universitario.</li>
+                        
+                        <li><strong>Reflexión crítica:</strong> Promuevo el análisis de noticias y casos de estudio para desarrollar pensamiento crítico sobre las causas de la violencia y alternativas de solución.</li>
+                    </ol>
+                    
+                    <p>Estas prácticas han demostrado que la educación para la paz no debe ser un tema aislado, sino transversal a todas las disciplinas. Los estudiantes que participan en estas iniciativas muestran mayor capacidad para trabajar en equipo, resolver diferencias constructivamente y comprometerse con el bien común.</p>
+                    
+                    <h3>Invitación a la acción</h3>
+                    
+                    <p>Invito a toda la comunidad universitaria a compartir sus propias experiencias y estrategias. Juntos podemos transformar nuestras instituciones en espacios de formación para la paz y la convivencia armónica.</p>
+                </div>
+                
+                <div class="tags">
+                    <span class="tag">educación para la paz</span>
+                    <span class="tag">universidad</span>
+                    <span class="tag">resolución de conflictos</span>
+                    <span class="tag">pedagogía</span>
+                </div>
+            </article>
+            
+            <section class="comments-section">
+                <h3 class="comments-title">Comparte tu iniciativa (3 comentarios)</h3>
+                
+                <div class="comment-form">
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="comment">Tu iniciativa o comentario</label>
+                            <textarea id="comment" name="comment" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Publicar comentario</button>
+                    </form>
+                </div>
+                
+                <div class="comment-list">
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">Carlos Méndez</span>
+                            <span class="comment-date">20 de marzo, 2025</span>
+                        </div>
+                        <div class="comment-content">
+                            <p>En nuestra facultad hemos creado un "Círculo de Diálogo" mensual donde estudiantes y profesores discutimos temas controvertidos con reglas de respeto mutuo. Ha sido increíble ver cómo incluso en temas muy polarizados podemos encontrar puntos en común cuando nos escuchamos genuinamente.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">Ana Lucía Ramírez</span>
+                            <span class="comment-date">18 de marzo, 2025</span>
+                        </div>
+                        <div class="comment-content">
+                            <p>Como estudiante de derecho, he participado en un programa de clínicas jurídicas donde ayudamos a comunidades en conflicto a encontrar soluciones pacíficas. Esta experiencia me ha enseñado que las leyes son importantes, pero el diálogo humano es fundamental para la paz duradera.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">Prof. Javier Torres</span>
+                            <span class="comment-date">16 de marzo, 2025</span>
+                        </div>
+                        <div class="comment-content">
+                            <p>En ingeniería hemos incorporado en todos los proyectos de curso una evaluación del impacto social y ambiental. Los estudiantes deben considerar cómo sus diseños pueden contribuir a la paz o generar conflictos. Ha cambiado completamente su perspectiva sobre la responsabilidad profesional.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Educación para la Paz - Comunidad Universitaria UANL</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook">f</i></a>
+                    <a href="#"><i class="fab fa-twitter">t</i></a>
+                    <a href="#"><i class="fab fa-instagram">i</i></a>
+                    <a href="#"><i class="fab fa-linkedin">in</i></a>
+                </div>
+                <p>Contacto: info@educacionparalapaz.edu</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
